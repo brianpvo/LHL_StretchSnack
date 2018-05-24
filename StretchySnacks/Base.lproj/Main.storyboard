@@ -40,19 +40,33 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="g6v-et-8Zc">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="76" height="75"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Y9V-9r-5sa">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="Y9V-9r-5sa" customClass="ImageCell" customModule="StretchySnacks" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="76" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="76" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XqH-Lr-h2o">
+                                                    <rect key="frame" x="0.0" y="0.0" width="76" height="75"/>
+                                                </imageView>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="XqH-Lr-h2o" firstAttribute="top" secondItem="Y9V-9r-5sa" secondAttribute="top" id="Gac-OA-sgp"/>
+                                            <constraint firstAttribute="trailing" secondItem="XqH-Lr-h2o" secondAttribute="trailing" id="KT3-h0-9YO"/>
+                                            <constraint firstAttribute="bottom" secondItem="XqH-Lr-h2o" secondAttribute="bottom" id="bqm-pj-jOX"/>
+                                            <constraint firstItem="XqH-Lr-h2o" firstAttribute="leading" secondItem="Y9V-9r-5sa" secondAttribute="leading" id="ti7-dD-9Po"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="XqH-Lr-h2o" id="IVf-Zd-DGp"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -73,6 +87,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="GlG-Vq-VHZ" id="xSY-UJ-JNr"/>
                         <outlet property="navBarView" destination="KXv-0F-sCu" id="xkF-eT-aXS"/>
                         <outlet property="navHeightConstraint" destination="G1Z-CP-6D9" id="sTP-IO-DOf"/>
                     </connections>

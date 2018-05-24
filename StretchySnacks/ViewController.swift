@@ -8,10 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UICollectionViewDataSource {
 
     @IBOutlet weak var navHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var collectionView: UICollectionView!
     var stackView: UIStackView!
+    var images = [UIImageView]()
     
     @IBOutlet weak var navBarView: UIView!
     
@@ -49,13 +51,15 @@ class ViewController: UIViewController {
         setTapGestureForImage(imageView: ramen, tag: 4)
     }
     
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 1
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        return UICollectionViewCell()
-//    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return images.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! ImageCell
+        cell.setup(tag: images[indexPath.row].tag)
+        return cell
+    }
     
     func createOreo() -> UIImageView {
         return UIImageView(image: #imageLiteral(resourceName: "oreos"))
@@ -90,8 +94,8 @@ class ViewController: UIViewController {
     
     @objc func imageTapped(tapGesture: UITapGestureRecognizer) {
         let image = tapGesture.view as! UIImageView
-        
-        print("image tap \(image.tag)")
+        images.append(image)
+        collectionView.reloadData()
     }
 
 }
