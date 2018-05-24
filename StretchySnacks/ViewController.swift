@@ -8,18 +8,17 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDataSource {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    @IBOutlet weak var navBarView: UIView!
     @IBOutlet weak var navHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var collectionView: UICollectionView!
     var stackView: UIStackView!
+    var snackLabel: UILabel!
     var images = [UIImageView]()
-    
-    @IBOutlet weak var navBarView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // IMAGES
         let oreos = UIImageView(image: #imageLiteral(resourceName: "oreos"))
         let pizzaPockets = UIImageView(image: #imageLiteral(resourceName: "pizza_pockets"))
@@ -43,12 +42,19 @@ class ViewController: UIViewController, UICollectionViewDataSource {
         stackView.topAnchor.constraint(equalTo: navBarView.topAnchor, constant: 100).isActive = true
         stackView.isHidden = true
         
-        
         setTapGestureForImage(imageView: oreos, tag: 0)
         setTapGestureForImage(imageView: pizzaPockets, tag: 1)
         setTapGestureForImage(imageView: popTarts, tag: 2)
         setTapGestureForImage(imageView: popsicle, tag: 3)
         setTapGestureForImage(imageView: ramen, tag: 4)
+        
+        snackLabel = UILabel(frame: navBarView.frame)
+        snackLabel.translatesAutoresizingMaskIntoConstraints = false
+        snackLabel.text = "SNACKS"
+        navBarView.addSubview(snackLabel)
+        
+        snackLabel.centerXAnchor.constraint(equalTo: navBarView.centerXAnchor, constant: 0).isActive = true
+        snackLabel.topAnchor.constraint(equalTo: navBarView.topAnchor, constant: 30).isActive = true
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -59,6 +65,14 @@ class ViewController: UIViewController, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! ImageCell
         cell.setup(tag: images[indexPath.row].tag)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.size.width / CGFloat(5.0), height: collectionView.frame.size.width / CGFloat(5.0))
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
     func createOreo() -> UIImageView {
