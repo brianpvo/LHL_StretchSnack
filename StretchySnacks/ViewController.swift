@@ -22,6 +22,13 @@ class ViewController: UIViewController {
         self.navHeightConstraint.constant = self.navHeightConstraint.constant == 64 ? 200 : 64
             UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: .curveEaseInOut, animations: {
                 self.view.layoutIfNeeded()
+                if self.navHeightConstraint.constant == 200 {
+                    sender.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+                }
+                else {
+                    sender.transform = CGAffineTransform(rotationAngle: CGFloat.pi * 2)
+                }
+                
             }, completion: nil)
     }
 
