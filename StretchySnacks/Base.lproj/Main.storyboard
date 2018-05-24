@@ -46,6 +46,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="navBarView" destination="KXv-0F-sCu" id="xkF-eT-aXS"/>
                         <outlet property="navHeightConstraint" destination="G1Z-CP-6D9" id="sTP-IO-DOf"/>
                     </connections>
                 </viewController>
