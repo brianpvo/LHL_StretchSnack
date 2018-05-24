@@ -19,10 +19,10 @@ class ViewController: UIViewController {
     }
 
     @IBAction func buttonTapped(_ sender: UIButton) {
-        self.navHeightConstraint.constant = 200
-        UIView.animate(withDuration: 1.0) {
-            self.view.layoutIfNeeded()
-        }
+        self.navHeightConstraint.constant = self.navHeightConstraint.constant == 64 ? 200 : 64
+            UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: .curveEaseInOut, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: nil)
     }
 
 }
