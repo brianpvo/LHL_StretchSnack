@@ -40,12 +40,36 @@ class ViewController: UIViewController {
         stackView.rightAnchor.constraint(equalTo: navBarView.rightAnchor, constant: 0).isActive = true
         stackView.topAnchor.constraint(equalTo: navBarView.topAnchor, constant: 100).isActive = true
         stackView.isHidden = true
+        
+        
+        setTapGestureForImage(imageView: oreos, tag: 0)
+        setTapGestureForImage(imageView: pizzaPockets, tag: 1)
+        setTapGestureForImage(imageView: popTarts, tag: 2)
+        setTapGestureForImage(imageView: popsicle, tag: 3)
+        setTapGestureForImage(imageView: ramen, tag: 4)
+    }
+    
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 1
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        return UICollectionViewCell()
+//    }
+    
+    func createOreo() -> UIImageView {
+        return UIImageView(image: #imageLiteral(resourceName: "oreos"))
+    }
+    
+    func createPizzaPocket() -> UIImageView {
+        return UIImageView(image: #imageLiteral(resourceName: "pizza_pockets"))
     }
 
     @IBAction func buttonTapped(_ sender: UIButton) {
         self.navHeightConstraint.constant = self.navHeightConstraint.constant == 64 ? 200 : 64
             UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: .curveEaseInOut, animations: {
                 self.stackView.isHidden = false
+                self.stackView.isUserInteractionEnabled = true
                 self.view.layoutIfNeeded()
                 if self.navHeightConstraint.constant == 200 {
                     sender.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
@@ -55,6 +79,19 @@ class ViewController: UIViewController {
                 }
                 
             }, completion: nil)
+    }
+    
+    func setTapGestureForImage(imageView: UIImageView, tag: Int) {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGesture:)))
+        imageView.addGestureRecognizer(tapGesture)
+        imageView.isUserInteractionEnabled = true
+        imageView.tag = tag
+    }
+    
+    @objc func imageTapped(tapGesture: UITapGestureRecognizer) {
+        let image = tapGesture.view as! UIImageView
+        
+        print("image tap \(image.tag)")
     }
 
 }

@@ -36,12 +36,39 @@
                                     <constraint firstAttribute="trailing" secondItem="WqN-ZC-yyr" secondAttribute="trailing" constant="10" id="IA1-Bg-d3e"/>
                                 </constraints>
                             </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GlG-Vq-VHZ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="g6v-et-8Zc">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Y9V-9r-5sa">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="PXR-vh-ycE"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="KXv-0F-sCu" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="1Jr-Ul-o9w"/>
                             <constraint firstItem="KXv-0F-sCu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9uw-x7-gnG"/>
+                            <constraint firstItem="GlG-Vq-VHZ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="CHE-pl-QBe"/>
+                            <constraint firstItem="GlG-Vq-VHZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PaD-lV-8jf"/>
+                            <constraint firstItem="GlG-Vq-VHZ" firstAttribute="top" secondItem="KXv-0F-sCu" secondAttribute="bottom" id="eZX-9s-PV2"/>
                             <constraint firstItem="KXv-0F-sCu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="f5o-WG-zOh"/>
+                            <constraint firstItem="GlG-Vq-VHZ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="mu8-KA-Sxd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
